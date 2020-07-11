@@ -1,0 +1,10 @@
+@base_url = {{dev_url}}
+@key = c9f4853521224232d215ff2963bcbdb6
+
+# @name Get Kremenchuk weather
+
+GET {{base_url}}?id=704147&appid={{key}}
+content-type: application/json
+Accept: application/json
+
+### 

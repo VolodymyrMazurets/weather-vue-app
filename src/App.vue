@@ -1,32 +1,95 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div id="app" class="app">
+    <el-menu
+      :default-active="$route.path"
+      mode="horizontal"
+      background-color="#545c64"
+      text-color="#fff"
+      active-text-color="#ffd04b"
+      router
+    >
+      <template v-for="rule in $router.options.routes">
+        <el-menu-item :index="rule.path" :key="rule.path">{{rule.name}}</el-menu-item>
+      </template>
+    </el-menu>
+    <transition name="fade" :appear="false" mode="out-in">
+      <router-view class="app__content" />
+    </transition>
   </div>
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-height: 100vh;
+  background-color: #c3c3c3;
+}
+.fade-enter-active {
+  animation: fadeIn 0.2s;
+}
+.fade-leave-active {
+  animation: fadeOut 0.2s;
+}
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
-#nav {
-  padding: 30px;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+  to {
+    opacity: 1;
+  }
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.fadeOut {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  flex-direction: column;
+  &__content {
+    flex: 1;
   }
 }
 </style>
