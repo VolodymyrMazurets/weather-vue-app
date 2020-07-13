@@ -29,8 +29,8 @@ export class Http {
         },
       });
       return data;
-    } catch {
-      return null;
+    } catch (error) {
+      return error;
     }
   };
 }

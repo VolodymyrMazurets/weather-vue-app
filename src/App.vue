@@ -90,6 +90,7 @@ body {
   flex-direction: column;
   &__content {
     flex: 1;
+    padding: 24px 5%;
   }
 }
 </style>
