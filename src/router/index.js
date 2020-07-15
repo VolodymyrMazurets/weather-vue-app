@@ -11,9 +11,14 @@ const routes = [
     component: Home,
   },
   {
-    path: '/daily',
-    name: 'Daily',
-    component: () => import('../views/Daily.vue'),
+    path: '/nasa',
+    name: 'Nasa',
+    component: () => import('../views/Nasa.vue'),
+  },
+  {
+    path: '/asteroids',
+    name: 'Asteroids',
+    component: () => import('../views/Asteroids.vue'),
   },
 ];
 

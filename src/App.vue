@@ -19,11 +19,11 @@
 </template>
 
 <style lang="scss">
-body {
+body, html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  min-height: 100vh;
+  height: 100vh;
   background-color: #c3c3c3;
 }
 .fade-enter-active {
@@ -83,7 +83,7 @@ body {
 }
 
 .app {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   align-items: stretch;
   justify-content: stretch;
