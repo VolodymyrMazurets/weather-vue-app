@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { WEATHER_URL, urls, API_KEY, NASA_URL, nasa_api_key } from './urls';
+import { WEATHER_URL, urls, API_KEY, NASA_URL, nasa_api_key, FILMS_URLS, films_api_key } from './urls';
 
 export class Http {
   getWeatherByCityId = async (id) => {
@@ -52,6 +52,35 @@ export class Http {
           start_date: start,
           end_date: end,
           api_key: nasa_api_key,
+        },
+      });
+      return data;
+    } catch {
+      return null;
+    }
+  };
+
+  getMarsPhoto = async () => {
+    try {
+      const { data } = await axios.get(`${NASA_URL}${urls.mars}`, {
+        params: {
+          sol: 1000,
+          api_key: nasa_api_key,
+        },
+      });
+      return data;
+    } catch {
+      return null;
+    }
+  };
+
+  getFilms = async (query, page) => {
+    try {
+      const { data } = await axios.get(`${FILMS_URLS}${urls.search}`, {
+        params: {
+          query: query,
+          page: page,
+          api_key: films_api_key,
         },
       });
       return data;

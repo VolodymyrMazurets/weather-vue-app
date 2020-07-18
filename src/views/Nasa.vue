@@ -40,5 +40,8 @@ export default {
   &__card {
     margin-bottom: 32px;
   }
+  .image {
+    width: 100%;
+  }
 }
 </style>

@@ -20,6 +20,16 @@ const routes = [
     name: 'Asteroids',
     component: () => import('../views/Asteroids.vue'),
   },
+  {
+    path: '/mars',
+    name: 'Mars',
+    component: () => import('../views/Mars.vue'),
+  },
+  {
+    path: '/films',
+    name: 'Films',
+    component: () => import('../views/Films.vue'),
+  },
 ];
 
 const router = new VueRouter({

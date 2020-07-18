@@ -10,6 +10,7 @@ const initialApod = {
 const state = () => ({
   apod: { ...initialApod },
   neo: {},
+  mars: [],
 });
 
 const mutations = {
@@ -18,6 +19,9 @@ const mutations = {
   },
   updateNeo(state, payload) {
     state.neo = { ...payload };
+  },
+  updateMars(state, payload) {
+    state.mars = [...payload];
   },
 };
 
@@ -29,6 +33,10 @@ const actions = {
   fetchNeo: async ({ commit }, { start, end }) => {
     const data = await http.getNeo({ start, end });
     if (data) commit('updateNeo', data);
+  },
+  fetchMars: async ({ commit }) => {
+    const { photos } = await http.getMarsPhoto();
+    if (photos) commit('updateMars', photos);
   },
 };
 
