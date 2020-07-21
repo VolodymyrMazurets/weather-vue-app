@@ -15,4 +15,5 @@ export const urls = {
   neo: '/neo/rest/v1/feed',
   mars: '/mars-photos/api/v1/rovers/curiosity/photos',
   search: '/search/movie',
+  movie: '/movie',
 };

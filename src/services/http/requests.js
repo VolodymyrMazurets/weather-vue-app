@@ -88,6 +88,19 @@ export class Http {
       return null;
     }
   };
+
+  getMovie= async (id) => {
+    try {
+      const { data } = await axios.get(`${FILMS_URLS}${urls.movie}/${id}`, {
+        params: {
+          api_key: films_api_key,
+        },
+      });
+      return data;
+    } catch {
+      return null;
+    }
+  };
 }
 
 export default new Http();

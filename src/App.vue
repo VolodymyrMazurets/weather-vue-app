@@ -8,8 +8,8 @@
       active-text-color="#ffd04b"
       router
     >
-      <template v-for="rule in $router.options.routes">
-        <el-menu-item :index="rule.path" :key="rule.path">{{rule.name}}</el-menu-item>
+      <template v-for="rule in filteredRoutes">
+        <el-menu-item :index="rule.path" :key="rule.path">{{ rule.name }}</el-menu-item>
       </template>
     </el-menu>
     <transition name="fade" :appear="false" mode="out-in">
@@ -18,8 +18,19 @@
   </div>
 </template>
 
+<script>
+export default {
+  computed: {
+    filteredRoutes() {
+      return this.$router.options.routes.filter((item) => item.name !== 'FilmDetails');
+    },
+  },
+};
+</script>
+
 <style lang="scss">
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;

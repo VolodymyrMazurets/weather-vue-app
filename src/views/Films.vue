@@ -1,16 +1,21 @@
 <template>
   <div class="films">
-    <el-input
-      @input="handleInput"
-      placeholder="Please input"
-      v-model="query"
-      style="margin-bottom: 16px"
-    ></el-input>
+    <el-input @input="handleInput" placeholder="Please input" v-model="query" style="margin-bottom: 16px"></el-input>
     <h1 v-if="(films && films.results && films.results.length) === 0">Type something to search films</h1>
     <el-row v-else :gutter="16" type="flex" align="stretch" style="flex-wrap: wrap">
       <el-col :span="4" v-for="film in films.results" :key="film.id" style="margin-bottom: 16px">
         <el-card
-          :body-style="{ padding: '0px', display: 'flex', flexDirection: 'column', alignItems: 'stretch', justifyContent: 'stretch', flex: 1}"
+          shadow="hover"
+          @click.native="$router.push({ path: `/films/${film.id}` })"
+          :body-style="{
+            padding: '0px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'stretch',
+            justifyContent: 'stretch',
+            flex: 1,
+            cursor: 'pointer',
+          }"
           class="films__card"
         >
           <img
@@ -24,7 +29,7 @@
           </div>
 
           <div style="padding: 14px; height: 106px">
-            <h4 class="films__title">{{film.original_title}}</h4>
+            <h4 class="films__title">{{ film.original_title }}</h4>
             <div class="bottom clearfix">
               <time class="time">{{ film.release_date }}</time>
             </div>
@@ -84,6 +89,8 @@ export default {
     justify-content: stretch;
   }
   &__icon-wrapper {
+    padding: 20px;
+    text-align: center;
     height: 100%;
     flex: 1;
     display: flex;
