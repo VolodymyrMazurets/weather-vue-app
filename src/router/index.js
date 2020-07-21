@@ -30,6 +30,11 @@ const routes = [
     name: 'Films',
     component: () => import('../views/Films.vue'),
   },
+  {
+    path: '/charts',
+    name: 'Charts',
+    component: () => import('../views/Charts.vue'),
+  },
 ];
 
 const router = new VueRouter({
