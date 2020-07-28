@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import ElementUi from 'element-ui';
-import vSelect  from 'vue-select';
+import vSelect from 'vue-select';
 import locale from 'element-ui/lib/locale/lang/en';
 
 import App from './App.vue';
@@ -14,7 +14,7 @@ Vue.config.productionTip = false;
 
 Vue.use(ElementUi, { locale });
 
-Vue.component('v-select', vSelect)
+Vue.component('v-select', vSelect);
 
 new Vue({
   router,

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Message } from 'element-ui';
 import { WEATHER_URL, urls, API_KEY, NASA_URL, nasa_api_key, FILMS_URLS, films_api_key } from './urls';
 
 export class Http {
@@ -45,7 +46,7 @@ export class Http {
     }
   };
 
-  getNeo = async ({start, end}) => {
+  getNeo = async ({ start, end }) => {
     try {
       const { data } = await axios.get(`${NASA_URL}${urls.neo}`, {
         params: {
@@ -89,7 +90,7 @@ export class Http {
     }
   };
 
-  getMovie= async (id) => {
+  getMovie = async (id) => {
     try {
       const { data } = await axios.get(`${FILMS_URLS}${urls.movie}/${id}`, {
         params: {
@@ -99,6 +100,27 @@ export class Http {
       return data;
     } catch {
       return null;
+    }
+  };
+
+  createPost = async ({ name, text }) => {
+    try {
+      const data = await axios.post('https://jsonplaceholder.typicode.com/posts', {
+        title: name,
+        body: text,
+        userId: 1,
+      });
+      const message = data?.status === 201 ? 'Post was created' : 'Somethismg wrong'
+      Message({
+        message: message,
+        type: 'success',
+      });
+    } catch (error) {
+      Message({
+        message: error.message,
+        type: 'error',
+      });
+      return error;
     }
   };
 }

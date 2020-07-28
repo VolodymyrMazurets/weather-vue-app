@@ -40,6 +40,11 @@ const routes = [
     name: 'Charts',
     component: () => import('../views/Charts.vue'),
   },
+  {
+    path: '/create-post',
+    name: 'Create Post',
+    component: () => import('../views/CreatePost.vue'),
+  },
 ];
 
 const router = new VueRouter({
